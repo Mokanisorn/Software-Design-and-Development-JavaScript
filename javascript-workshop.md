@@ -76,10 +76,64 @@ JavaScript สามารถเพิ่มลงในเว็บเพจไ
    - มีปุ่มเมื่อคลิกแล้วจะแสดงข้อความที่กรอกในช่องข้อความ  (สามารถใช้ document.getElementById('id ของ textbox').value เพื่อดึงข้อมูลในช่อง)
 ### บันทึกผลการทดลอง 
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แบบฝึก JavaScript เบื้องต้น</title>
+
+    <!-- Internal JavaScript -->
+    <script>
+        function showDate() {
+            const today = new Date();
+            document.getElementById("result").innerHTML =
+                "วันที่ปัจจุบัน: " + today.toLocaleDateString('th-TH');
+        }
+
+        function showInputText() {
+            let text = document.getElementById("myText").value;
+            document.getElementById("result").innerHTML =
+                "ข้อความที่คุณพิมพ์: " + text;
+        }
+    </script>
+</head>
+<body>
+
+    <h2>แบบฝึกปฏิบัติ JavaScript</h2>
+
+    <!-- ปุ่มที่ 1 : Inline JavaScript -->
+    <button onclick="document.getElementById('result').innerHTML='ชื่อนักศึกษา: นายคณิศร เนตรสุวรรณ'">
+        แสดงชื่อนักศึกษา
+    </button>
+
+    <!-- ปุ่มที่ 2 : Internal JavaScript -->
+    <button onclick="showDate()">
+        แสดงวันที่ปัจจุบัน
+    </button>
+
+    <!-- ปุ่มที่ 3 : External JavaScript -->
+    <button onclick="showTime()">
+        แสดงเวลาปัจจุบัน
+    </button>
+
+    <hr>
+
+    <!-- กล่องข้อความ -->
+    <input type="text" id="myText" placeholder="พิมพ์ข้อความที่นี่">
+    <button onclick="showInputText()">แสดงข้อความ</button>
+
+    <hr>
+
+    <p id="result"></p>
+
+    <!-- เรียกใช้ External JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 1](images/image.png)
+[![alt text](image.png)]
 
 ## การทดลองที่ 2: พื้นฐาน JavaScript
 ### 2.1 การประกาศตัวแปรและชนิดข้อมูล
