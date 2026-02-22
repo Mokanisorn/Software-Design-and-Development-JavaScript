@@ -2,54 +2,42 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <title>แบบฝึก JavaScript เบื้องต้น</title>
-
-    <!-- Internal JavaScript -->
-    <script>
-        function showDate() {
-            const today = new Date();
-            document.getElementById("result").innerHTML =
-                "วันที่ปัจจุบัน: " + today.toLocaleDateString('th-TH');
-        }
-
-        function showInputText() {
-            let text = document.getElementById("myText").value;
-            document.getElementById("result").innerHTML =
-                "ข้อความที่คุณพิมพ์: " + text;
-        }
-    </script>
+    <title>การทดลองที่ 2.1</title>
 </head>
 <body>
 
-    <h2>แบบฝึกปฏิบัติ JavaScript</h2>
+    <h2>ข้อมูลนักศึกษา</h2>
 
-    <!-- ปุ่มที่ 1 : Inline JavaScript -->
-    <button onclick="document.getElementById('result').innerHTML='ชื่อนักศึกษา: นายคณิศร เนตรสุวรรณ'">
-        แสดงชื่อนักศึกษา
-    </button>
+    <div id="output"></div>
 
-    <!-- ปุ่มที่ 2 : Internal JavaScript -->
-    <button onclick="showDate()">
-        แสดงวันที่ปัจจุบัน
-    </button>
+    <script>
+        // ===== ข้อ 1: ตัวแปร =====
+        const studentId = "68030030";
+        const studentName = "นายคณิศร เนตรสุวรรณ";
+        let midtermScore = 38;
+        let finalScore = 42;
 
-    <!-- ปุ่มที่ 3 : External JavaScript -->
-    <button onclick="showTime()">
-        แสดงเวลาปัจจุบัน
-    </button>
+        // ===== ข้อ 2: Object =====
+        const student = {
+            studentId: "68030030",
+            name: "นายคณิศร เนตรสุวรรณ",
+            major: "เทคโนโลยีคอมพิวเตอร์",
+            gpa: 2.57
+        };
 
-    <hr>
-
-    <!-- กล่องข้อความ -->
-    <input type="text" id="myText" placeholder="พิมพ์ข้อความที่นี่">
-    <button onclick="showInputText()">แสดงข้อความ</button>
-
-    <hr>
-
-    <p id="result"></p>
-
-    <!-- เรียกใช้ External JavaScript -->
-    <script src="script.js"></script>
+        // แสดงผลบนหน้าเว็บ
+        document.getElementById("output").innerHTML = `
+            <p>รหัสนักศึกษา: ${studentId}</p>
+            <p>ชื่อ: ${studentName}</p>
+            <p>คะแนนกลางภาค: ${midtermScore}</p>
+            <p>คะแนนปลายภาค: ${finalScore}</p>
+            <hr>
+            <p>Object - รหัส: ${student.studentId}</p>
+            <p>Object - ชื่อ: ${student.name}</p>
+            <p>Object - สาขา: ${student.major}</p>
+            <p>Object - เกรดเฉลี่ย: ${student.gpa}</p>
+        `;
+    </script>
 
 </body>
 </html>
