@@ -2,16 +2,15 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <title>แบบทดสอบ 2.3 การควบคุมการทำงาน</title>
+    <title>แบบทดสอบ 2.4.1 Functions</title>
 </head>
 <body>
 
-    <h1>แบบทดสอบที่ 2.3</h1>
+    <h1>แบบทดสอบที่ 2.4.1 : Functions</h1>
 
-    <button onclick="checkEvenOdd()">ข้อ 1: ตรวจเลขคู่/คี่</button>
-    <button onclick="showMultiplication()">ข้อ 2: สูตรคูณ</button>
-    <button onclick="countDown()">ข้อ 3: นับถอยหลัง</button>
-    <button onclick="checkAge()">ข้อ 4: ตรวจช่วงวัย</button>
+    <button onclick="calculateBMI()">ข้อ 1: คำนวณ BMI</button>
+    <button onclick="greetByAge()">ข้อ 2: ทักทายตามอายุ</button>
+    <button onclick="checkPassword()">ข้อ 3: ตรวจสอบรหัสผ่าน</button>
 
     <hr>
     <div id="output"></div>
@@ -19,61 +18,62 @@
     <script>
         let output = document.getElementById("output");
 
-        // ข้อ 1
-        function checkEvenOdd() {
-            output.innerHTML = "";
-            let number = parseInt(prompt("กรอกตัวเลข"));
+        // ✅ ข้อ 1: คำนวณ BMI
+        function bmi(weight, height) {
+            return weight / (height * height);
+        }
 
-            if (number % 2 === 0) {
-                output.innerHTML = number + " เป็นเลขคู่";
+        function calculateBMI() {
+            output.innerHTML = "";
+
+            let weight = parseFloat(prompt("กรอกน้ำหนัก (กิโลกรัม)"));
+            let height = parseFloat(prompt("กรอกส่วนสูง (เมตร เช่น 1.70)"));
+
+            let result = bmi(weight, height);
+            result = result.toFixed(2);
+
+            output.innerHTML = "ค่า BMI ของคุณคือ: " + result;
+        }
+
+
+        // ✅ ข้อ 2: ทักทายตามอายุ
+        function greet(name, age) {
+            if (age <= 12) {
+                return "สวัสดีเด็กชาย/เด็กหญิง " + name;
+            } else if (age <= 19) {
+                return "สวัสดีวัยรุ่น " + name;
             } else {
-                output.innerHTML = number + " เป็นเลขคี่";
+                return "สวัสดีคุณ " + name;
             }
         }
 
-        // ข้อ 2
-        function showMultiplication() {
-            output.innerHTML = "<h3>สูตรคูณแม่ 2</h3>";
-
-            // for loop แม่ 2
-            for (let i = 1; i <= 12; i++) {
-                output.innerHTML += "2 x " + i + " = " + (2 * i) + "<br>";
-            }
-
-            output.innerHTML += "<h3>สูตรคูณแม่ 3</h3>";
-
-            // while loop แม่ 3
-            let i = 1;
-            while (i <= 12) {
-                output.innerHTML += "3 x " + i + " = " + (3 * i) + "<br>";
-                i++;
-            }
-        }
-
-        // ข้อ 3
-        function countDown() {
-            output.innerHTML = "<h3>นับถอยหลัง</h3>";
-
-            for (let i = 10; i >= 1; i--) {
-                output.innerHTML += i + "<br>";
-            }
-        }
-
-        // ข้อ 4
-        function checkAge() {
+        function greetByAge() {
             output.innerHTML = "";
+
+            let name = prompt("กรอกชื่อ");
             let age = parseInt(prompt("กรอกอายุ"));
 
-            if (age <= 12) {
-                output.innerHTML = "วัยเด็ก";
-            } else if (age <= 19) {
-                output.innerHTML = "วัยรุ่น";
-            } else if (age <= 59) {
-                output.innerHTML = "วัยผู้ใหญ่";
+            output.innerHTML = greet(name, age);
+        }
+
+
+        // ✅ ข้อ 3: ตรวจสอบรหัสผ่าน
+        function isValidPassword(password) {
+            return password.length > 8;
+        }
+
+        function checkPassword() {
+            output.innerHTML = "";
+
+            let password = prompt("กรอกรหัสผ่าน (มากกว่า 8 ตัวอักษร)");
+
+            if (isValidPassword(password)) {
+                output.innerHTML = "รหัสผ่านถูกต้อง (ความยาวเพียงพอ)";
             } else {
-                output.innerHTML = "วัยชรา";
+                output.innerHTML = "รหัสผ่านสั้นเกินไป";
             }
         }
+
     </script>
 
 </body>
