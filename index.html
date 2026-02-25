@@ -2,41 +2,78 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <title>การทดลองที่ 2.1</title>
+    <title>แบบทดสอบ 2.3 การควบคุมการทำงาน</title>
 </head>
 <body>
 
-    <h2>ข้อมูลนักศึกษา</h2>
+    <h1>แบบทดสอบที่ 2.3</h1>
 
+    <button onclick="checkEvenOdd()">ข้อ 1: ตรวจเลขคู่/คี่</button>
+    <button onclick="showMultiplication()">ข้อ 2: สูตรคูณ</button>
+    <button onclick="countDown()">ข้อ 3: นับถอยหลัง</button>
+    <button onclick="checkAge()">ข้อ 4: ตรวจช่วงวัย</button>
+
+    <hr>
     <div id="output"></div>
 
     <script>
-        // ===== ข้อ 1: ตัวแปร =====
-        const studentId = "68030030";
-        const studentName = "นายคณิศร เนตรสุวรรณ";
-        let midtermScore = 38;
-        let finalScore = 42;
+        let output = document.getElementById("output");
 
-        // ===== ข้อ 2: Object =====
-        const student = {
-            studentId: "68030030",
-            name: "นายคณิศร เนตรสุวรรณ",
-            major: "เทคโนโลยีคอมพิวเตอร์",
-            gpa: 2.57
-        };
+        // ข้อ 1
+        function checkEvenOdd() {
+            output.innerHTML = "";
+            let number = parseInt(prompt("กรอกตัวเลข"));
 
-        // แสดงผลบนหน้าเว็บ
-        document.getElementById("output").innerHTML = `
-            <p>รหัสนักศึกษา: ${studentId}</p>
-            <p>ชื่อ: ${studentName}</p>
-            <p>คะแนนกลางภาค: ${midtermScore}</p>
-            <p>คะแนนปลายภาค: ${finalScore}</p>
-            <hr>
-            <p>Object - รหัส: ${student.studentId}</p>
-            <p>Object - ชื่อ: ${student.name}</p>
-            <p>Object - สาขา: ${student.major}</p>
-            <p>Object - เกรดเฉลี่ย: ${student.gpa}</p>
-        `;
+            if (number % 2 === 0) {
+                output.innerHTML = number + " เป็นเลขคู่";
+            } else {
+                output.innerHTML = number + " เป็นเลขคี่";
+            }
+        }
+
+        // ข้อ 2
+        function showMultiplication() {
+            output.innerHTML = "<h3>สูตรคูณแม่ 2</h3>";
+
+            // for loop แม่ 2
+            for (let i = 1; i <= 12; i++) {
+                output.innerHTML += "2 x " + i + " = " + (2 * i) + "<br>";
+            }
+
+            output.innerHTML += "<h3>สูตรคูณแม่ 3</h3>";
+
+            // while loop แม่ 3
+            let i = 1;
+            while (i <= 12) {
+                output.innerHTML += "3 x " + i + " = " + (3 * i) + "<br>";
+                i++;
+            }
+        }
+
+        // ข้อ 3
+        function countDown() {
+            output.innerHTML = "<h3>นับถอยหลัง</h3>";
+
+            for (let i = 10; i >= 1; i--) {
+                output.innerHTML += i + "<br>";
+            }
+        }
+
+        // ข้อ 4
+        function checkAge() {
+            output.innerHTML = "";
+            let age = parseInt(prompt("กรอกอายุ"));
+
+            if (age <= 12) {
+                output.innerHTML = "วัยเด็ก";
+            } else if (age <= 19) {
+                output.innerHTML = "วัยรุ่น";
+            } else if (age <= 59) {
+                output.innerHTML = "วัยผู้ใหญ่";
+            } else {
+                output.innerHTML = "วัยชรา";
+            }
+        }
     </script>
 
 </body>

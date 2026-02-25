@@ -286,10 +286,63 @@ number /= 2;          // เท่ากับ number = number / 2
 
 ### บันทึกผลการทดลอง 2.2
 ```html
-[บันทึกโค้ด ที่นี่]
+[<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>แบบทดสอบ 2.2</title>
+</head>
+<body>
+
+    <h2>ผลการคำนวณ</h2>
+    <div id="output"></div>
+
+    <script>
+        // =========================
+        // ข้อ 1: คำนวณคะแนนเฉลี่ย
+        // =========================
+
+        let score1 = 80;
+        let score2 = 75;
+        let score3 = 90;
+
+        let average = (score1 + score2 + score3) / 3;
+
+        // =========================
+        // ข้อ 2: คำนวณราคาสินค้ารวม VAT 7%
+        // =========================
+
+        const productName = "โน้ตบุ๊ก";
+        let price = 15000;
+        let vat = price * 0.07;
+        let totalPrice = price + vat;
+
+        // =========================
+        // แสดงผลบนหน้าเว็บ
+        // =========================
+
+        document.getElementById("output").innerHTML = `
+            <h3>ข้อ 1: คะแนนเฉลี่ย</h3>
+            <p>คะแนนวิชา 1: ${score1}</p>
+            <p>คะแนนวิชา 2: ${score2}</p>
+            <p>คะแนนวิชา 3: ${score3}</p>
+            <p><strong>คะแนนเฉลี่ย: ${average}</strong></p>
+
+            <hr>
+
+            <h3>ข้อ 2: คำนวณราคาสินค้า</h3>
+            <p>ชื่อสินค้า: ${productName}</p>
+            <p>ราคา: ${price} บาท</p>
+            <p>VAT 7%: ${vat} บาท</p>
+            <p><strong>ราคารวม VAT: ${totalPrice} บาท</strong></p>
+        `;
+    </script>
+
+</body>
+</html>]
 ```
 **รูปผลการทดลอง**
-![รูปผลการทดลองที่ 2.2](images/image.png)
+![alt text](image-2.png)]
 
 ### 2.3 การควบคุมการทำงาน
 
